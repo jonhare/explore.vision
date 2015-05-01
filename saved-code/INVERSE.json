@@ -1,0 +1,1 @@
+{"name":"Image inverse","code":"function process(input, output) {\n    var x, y;\n    for (y=0; y<output.height; y++) {\n        for (x=0; x<output.width; x++) {\n            output[y][x].r = 1-input[y][x].r;\n            output[y][x].g = 1-input[y][x].g;\n            output[y][x].b = 1-input[y][x].b;\n        }\n    }\n}"}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset=utf-8>
+  <meta name="viewport" content="width=1280">
+  <title>The ECS Online Computer Vision Playground</title>
+  <style>
+    #gum {
+      background: #c00;
+      color: #fff;
+      padding: 10px;
+    }
+    #source {
+      display: block; 
+      margin: 20px 0; 
+      max-width: 100%; 
+      width: 640px;
+      height: 480px;
+      float:left;
+    }
+    #sink {
+      display: block; 
+      margin: 20px 0; 
+      max-width: 100%; 
+      float:left;
+      width: 640px;
+      height: 480px;
+    }
+    video, canvas { display: none; }
+    input { width: 360px; }
+  </style>
+</head>
+<body>
+<section id="wrapper">
+    <header>
+      <h1>The ECS Online Computer Vision Playground</h1>
+    </header>
+
+<article>
+    <video id="video" muted loop autoplay>
+    <!-- <source src="remy-and-ellis2.mp4"></source> -->
+    <!-- <source src="/assets/remy-and-ellis2.webm"></source> -->
+  </video>
+  <canvas id="source"></canvas>
+  <canvas id="sink"></canvas>
+  <p id="gum">Error: getUserMedia() either not supported or not allowed.</p>
+
+  <div style="float: left">
+    <textarea rows="10" cols="100" id="code">
+      function process(input, output) {
+        var x, y;
+        for (y=0, i=0; y<output.height; y++) {
+          for (x=0; x<output.width; x++) {
+            output.pixels[y][x].r = 1-input.pixels[y][x].r;
+            output.pixels[y][x].g = 1-input.pixels[y][x].g;
+            output.pixels[y][x].b = 1-input.pixels[y][x].b;
+          }
+        }
+      }
+    </textarea>
+
+    <button onclick="run()">Go!</button>
+  </div>
+</article>
+<script>
+  var video = document.querySelector('video');
+
+function run() {
+  window.eval(document.getElementById("code").value);
+}
+
+function gumSuccess(stream) {
+  if ('mozSrcObject' in video) {
+    video.mozSrcObject = stream;
+  } else if (window.URL) {
+    video.src = window.URL.createObjectURL(stream);
+  } else {
+    video.src = stream;
+  }
+  video.play();
+}
+
+function gumError(error) {
+  console.error('Error on getUserMedia', error);
+}
+
+function gumInit() {
+  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+
+  if (navigator.getUserMedia) {
+    navigator.getUserMedia({video: true }, gumSuccess, gumError);
+  }
+}
+
+gumInit();
+
+var source = document.getElementById('source').getContext('2d'),
+    sink = document.getElementById('sink').getContext('2d'),
+    output = sink,
+    width = 160,
+    height = 120;
+
+// shim layer with setTimeout fallback - from Paul Irish
+window.requestAnimFrame = (function(){
+  return  window.requestAnimationFrame       || 
+          window.webkitRequestAnimationFrame || 
+          window.mozRequestAnimationFrame    || 
+          window.oRequestAnimationFrame      || 
+          window.msRequestAnimationFrame     || 
+          function( callback ){
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
+var article = video.parentNode,
+    gum = document.getElementById('gum');
+
+if (navigator.getUserMedia) {
+  article.removeChild(gum);
+  article.className = 'supported';
+}
+
+// note: video is defined in gum.js
+video.addEventListener('loadedmetadata', function () {
+  // due to bug in Chrome: http://crbug.com/168700
+  if (video.videoWidth) {
+    source.canvas.width = video.videoWidth;
+    source.canvas.height = video.videoHeight;
+    sink.canvas.width = video.videoWidth;
+    sink.canvas.height = video.videoHeight;
+  }
+  window.inimg = newImage(video.videoWidth, video.videoHeight);
+  window.outimg = newImage(video.videoWidth, video.videoHeight);
+  draw();
+});
+
+
+function draw() {
+  requestAnimFrame(draw);
+  source.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, source.canvas.width, source.canvas.height);
+  var pixels = source.getImageData(0, 0, source.canvas.width, source.canvas.height),
+      i = 0,
+      brightness;
+
+  toImage(pixels, inimg);
+  process(inimg, outimg);
+  fromImage(outimg, pixels);
+
+  output.putImageData(pixels, 0, 0);
+}
+
+function process(input, output) {
+  var x, y;
+  for (y=0, i=0; y<output.height; y++) {
+    for (x=0; x<output.width; x++) {
+      output.pixels[y][x].r = input.pixels[y][x].r;
+      output.pixels[y][x].g = input.pixels[y][x].g;
+      output.pixels[y][x].b = input.pixels[y][x].b;
+    }
+  }
+}
+
+function newImage(width, height) {
+  var output = {};
+  output.width = width;
+  output.height = height;
+  output.pixels = [];
+  for (y=0; y<output.height; y++) {
+    output.pixels.push([]);
+    for (x=0; x<output.width; x++) {
+      output.pixels[y].push({});
+      output.pixels[y][x].r = 0;
+      output.pixels[y][x].g = 0;
+      output.pixels[y][x].b = 0;
+    }
+  }
+  return output;
+}
+
+var _INV_255_ = 1/255;
+
+function toImage(imagedata, output) {
+  var x,y,i;
+  for (y=0, i=0; y<output.height; y++) {
+    for (x=0; x<output.width; x++, i+=4) {
+      output.pixels[y][x].r = imagedata.data[i] * _INV_255_;
+      output.pixels[y][x].g = imagedata.data[i+1] * _INV_255_;
+      output.pixels[y][x].b = imagedata.data[i+2] * _INV_255_;
+    }
+  }
+}
+
+function fromImage(image, imagedata) {
+  var x,y,i;
+  for (y=0, i=0; y<image.height; y++) {
+    for (x=0; x<image.width; x++, i+=4) {
+      //shifting casts to int
+      imagedata.data[i]   = clip(image.pixels[y][x].r * 255) >> 0;
+      imagedata.data[i+1] = clip(image.pixels[y][x].g * 255) >> 0;
+      imagedata.data[i+2] = clip(image.pixels[y][x].b * 255) >> 0;
+    }
+  }
+}
+
+function clip(v) {
+  return Math.max(0, Math.min(255,v));
+}
+
+</script>
+</body>
+</html>
