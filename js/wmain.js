@@ -5,8 +5,6 @@ function initialiseVideo(sourceName, sinkName) {
     video: document.querySelector('video'),
     source: document.getElementById(sourceName).getContext('2d'),
     sink: document.getElementById(sinkName).getContext('2d'),
-    width: 160,
-    height: 120,
     process: function(input, output) {
       var x, y;
       for (y=0, i=0; y<output.height; y++) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=1280">
-  <title>ECS-OCVL: Online Computer Vision Lab</title>
+  <title>Explore Computer Vision</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
   <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
@@ -20,7 +20,6 @@
         var px = cell.height();
         cell.height(px);
 
-        console.log($("#log:parent"));
         $("#log").height($("#logContainer").height());
       }
 
@@ -32,6 +31,7 @@
         var editor = ace.edit("editor");
         editor.setTheme("ace/theme/monokai");
         editor.getSession().setMode("ace/mode/javascript");
+        editor.$blockScrolling = Infinity;
         editor.setShowPrintMargin(false);
         // editor.setOptions({
         //   enableBasicAutocompletion: true,
@@ -39,7 +39,7 @@
         //   enableLiveAutocompletion: true
         // });
 
-        //disable backspace navigation
+        //disable backspace navigation  
         $(document).on('keydown',function(e){
           var $target = $(e.target||e.srcElement);
           if(e.keyCode == 8 && !$target.is('input,[contenteditable="true"],textarea'))
@@ -64,7 +64,12 @@
         resize();
 
         //load the code
-        var file = "saved-code/default.json";
+        <?php 
+          $name = "saved-code/default.json";
+          if (isset($_REQUEST['id']) && file_exists("saved-code/".$_REQUEST['id'].".json"))
+            $name = "saved-code/".$_REQUEST['id'].".json";
+          echo "var file = \"".$name."\";";
+        ?>
         $.getJSON(file, function(data) {
           $("#title").val(data.name);
           editor.setValue(data.code, -1);
@@ -146,7 +151,7 @@
                 <span class="uif" style="position : relative; top: 6px; left: -6px">LOG</span>
               </div>
               <div id="logContainer" style="width: 90%; height: calc(100% - 10px); max-height: calc(100% - 10px); background-color: black; float: left; font-family: monospace; color: white;">
-                <div id="log" style="overflow:scroll; width: calc(100% - 10px); text-align: left; margin-left:10px;">
+                <div id="log" style="overflow-y:scroll; overflow-x:hidden; width: calc(100% - 10px); text-align: left; margin-left:10px;">
 
                 </div>
               </div>

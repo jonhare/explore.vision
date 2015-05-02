@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^/index.php
+RewriteCond %{REQUEST_URI} !.php$
+RewriteCond %{REQUEST_URI} !/$
+#RewriteCond %{REQUEST_URI} !/
+RewriteBase /~jon/summerschool/
+RewriteRule ^([A-Za-z0-9]*)$ index.php?id=$1 [QSA]

@@ -88,6 +88,7 @@ input { width: 360px; }
 .uif {
   font-family: "lcars_font";
   font-size: x-large;
+  text-transform: uppercase;
 }
 
 .ui {
@@ -180,4 +181,59 @@ button:hover {
   opacity: 0.75;
   background-color: black;
   z-index:10000;
+}
+
+.fileitem {
+  background-color: #BF5054;
+  display: block;
+  border-radius: 10px;
+  padding: 3px;
+  margin: 5px;
+}
+
+.fileitem.alt {
+  background-color: #837EF9; 
+}
+
+.fileitem:hover {
+  background-color: #C084C1;
+}
+
+.filename {
+  display: inline-block;
+  width: 15%;
+  text-align: right;
+  padding-right: 5px;
+  color:black;
+}
+
+.filetitle {
+  color:white;
+  display: inline-block;
+  width: 80%;
+  background-color: black;
+  padding: inherit;
+  margin: -5px;
+}
+
+
+::-webkit-scrollbar {
+    width:6px;
+    height:6px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    background:rgba(255,255,255,.1);
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius:5px;
+    border-radius:5px;
+    background:rgba(255,255,255,0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background:rgba(255,255,255,0.4);
 }
