@@ -92,6 +92,8 @@
   </script>
 </head>
 <body>
+  <?php include_once("analyticstracking.php") ?>
+  
   <div id="drawingArea" class="row" style="height:530px">
     <div class="cell">
       <div class="altcell yellow" style="width:6%; height: 526px; border-radius: 25px 0 0 0; margin-left:1%; text-align:right">
