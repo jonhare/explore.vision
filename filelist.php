@@ -21,7 +21,7 @@
     <div class="cell yellow uif" style="width:6%; text-align:right">
       FILES&nbsp;
     </div>
-    <div class="cell uif" style="color:white; overflow:scroll">
+    <div class="cell uif" style="color:white; overflow-y:scroll">
       <?php
         $files = scandir("saved-code");
         $i = 0;
