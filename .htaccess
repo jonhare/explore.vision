@@ -1,14 +1,12 @@
+SetEnvIf HOST "localhost" REWRITEBASE=/~jon/summerschool/
+SetEnvIf HOST "explore.vision" REWRITEBASE=/
 RewriteEngine on
+
+RewriteBase /
+
 RewriteCond %{REQUEST_URI} !^/index.php
 RewriteCond %{REQUEST_URI} !.php$
 RewriteCond %{REQUEST_URI} !/$
 #RewriteCond %{REQUEST_URI} !/
 
-<If "-d '/Users/jon/Sites/summerschool/'">
-  RewriteBase /~jon/summerschool/
-</If>
-<Else>
-  RewriteBase /
-</Else>
-
-RewriteRule ^([A-Za-z0-9]*)$ index.php?id=$1 [QSA]
+RewriteRule ^([A-Za-z0-9]*)$ %{ENV:REWRITEBASE}index.php?id=$1 [QSA]
