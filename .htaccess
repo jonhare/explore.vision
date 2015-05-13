@@ -4,6 +4,9 @@ RewriteEngine on
 
 RewriteBase /
 
+RewriteCond %{REQUEST_URI} ^/filelist$
+RewriteRule ^([A-Za-z0-9]*)$ %{ENV:REWRITEBASE}filelist.php [QSA]
+
 RewriteCond %{REQUEST_URI} !^/index.php
 RewriteCond %{REQUEST_URI} !.php$
 RewriteCond %{REQUEST_URI} !/$
