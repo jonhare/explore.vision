@@ -25,7 +25,20 @@
 
       $(document).ready(function() {
         //initialise the video
-        initialiseVideo("source", "sink");
+        initialiseVideo("source", "sink", function() {
+          //load the code once the video is initialised
+          <?php 
+            $name = "saved-code/default.json";
+            if (isset($_REQUEST['id']) && file_exists("saved-code/".$_REQUEST['id'].".json"))
+              $name = "saved-code/".$_REQUEST['id'].".json";
+            echo "var file = \"".$name."\";";
+          ?>
+          $.getJSON(file, function(data) {
+            $("#title").val(data.name);
+            editor.setValue(data.code, -1);
+            run(data.code);
+          });
+        });
 
         //setup the ui controls
         var editor = ace.edit("editor");
@@ -62,19 +75,6 @@
 
         $( window ).resize(resize);
         resize();
-
-        //load the code
-        <?php 
-          $name = "saved-code/default.json";
-          if (isset($_REQUEST['id']) && file_exists("saved-code/".$_REQUEST['id'].".json"))
-            $name = "saved-code/".$_REQUEST['id'].".json";
-          echo "var file = \"".$name."\";";
-        ?>
-        $.getJSON(file, function(data) {
-          $("#title").val(data.name);
-          editor.setValue(data.code, -1);
-          run(data.code);
-        });
 
         window.performLoad = function() {
           var file = "saved-code/" + $("#codeInput").val() + ".json";
@@ -177,7 +177,7 @@
       FILE IDENTIFIER: <span id="code"></span> 
       <br/>
       <br/>
-      <button id="ok" onclick="dismissSave()">ACKNOWLEDGE</button>
+      <button id="saveok" onclick="dismissSave()">ACKNOWLEDGE</button>
     </div>
   </div>
   <div class="dialog" id="loadDialog">
@@ -186,10 +186,15 @@
       <br/>
       <span id="loadError"></span>
       <br/>
-      <button id="ok" onclick="dismissLoad()">CANCEL</button>
-      <button id="ok" onclick="performLoad()">LOAD</button>
+      <button id="cancel" onclick="dismissLoad()">CANCEL</button>
+      <button id="loadok" onclick="performLoad()">LOAD</button>
     </div>
   </div>
+<!--   <div class="dialog" id="helpDialog">
+    <div id="helpDialogInner">
+      <button id="helpok" onclick="dismissHelp()">DISMISS</button>
+    </div>
+  </div> -->
 </body>
 </html>
 

@@ -1,4 +1,4 @@
-function initialiseVideo(sourceName, sinkName) {
+function initialiseVideo(sourceName, sinkName, cb) {
   gumInit();
 
   window.ocvl = {
@@ -47,6 +47,7 @@ function initialiseVideo(sourceName, sinkName) {
       ocvl.sink.canvas.height = ocvl.video.videoHeight;
     }
     draw();
+    cb();
   });
 }
  

@@ -43,6 +43,7 @@ function messageReceived(e) {
 }
 
 function newImage(width, height, data) {
+  var x,y;
   var output = [];
   output.width = width;
   output.height = height;
@@ -103,7 +104,7 @@ function clip(v) {
 }
 
 function log(argument) {
-  self.postMessage({"message": "log", "data": argument});
+  self.postMessage({"message": "log", "data": (argument + "").substring(0,255)});
 }
 
 function clearLog() {
