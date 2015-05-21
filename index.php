@@ -111,7 +111,8 @@
       </div>
       <div class="altcell" style="width:91%;">
         <video id="video" muted loop autoplay>
-          <!-- <source src="remy-and-ellis2.mp4"></source> -->
+          <source src="melies.mp4"></source>
+          <source src="melies.ogv"></source>
         </video>
         <div style="width:calc(50% - 7px); height: 38px; margin-bottom: 4px; text-align:right; float:left" class="yellow">
           <span class="uif" style="position : relative; top: 6px; left: -6px">INPUT</span>
@@ -119,16 +120,16 @@
         <div style="width:calc(50% - 7px); height: 38px; margin-bottom: 4px; text-align:right; float:left; margin-left:14px" class="yellow">
           <span class="uif" style="position : relative; top: 6px; left: -6px">OUTPUT</span>
         </div>
-        <!-- <div class="ui yellow videohead">INPUT</div> -->
-        <!-- <div class="ui" style="width:6px; padding: 0;"></div> -->
-        <!-- <div class="ui yellow videohead">OUTPUT</div> -->
         <div style="width:50%; float: left">
+          <div style="position: absolute; z-index: 100000; color:red; width: 640px" id="nowebcam">
+            <div style="margin-left: auto; margin-right:auto; padding:10px" class="uif">WEBCAM INPUT NOT AVAILABLE OR NOT SUPPORTED BY YOUR BROWSER</div>
+            <div style="margin-left: auto; margin-right:auto; padding:10px; margin-top:390px" class="uif">PLAYING "Le papillon fantastique" by Georges Méliès</div>
+          </div>
           <canvas id="source"></canvas>
         </div>
         <div style="width:50%; float: left">
           <canvas id="sink"></canvas>
         </div>
-        <p style="display: none" id="gum">Error: getUserMedia() either not supported or not allowed.</p>
       </div>
       <div class="altcell yellow" style="height: 526px; width:1%; margin-right: 1%; border-radius: 0 5px 0 0;">
       </div>

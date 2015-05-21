@@ -29,12 +29,8 @@ function initialiseVideo(sourceName, sinkName, cb) {
             };
   })();
 
-  var article = video.parentNode,
-      gum = document.getElementById('gum');
-
   if (navigator.getUserMedia) {
-    article.removeChild(gum);
-    //article.className = 'supported';
+    $("#nowebcam").css("display", "none");
   }
 
   // note: video is defined in gum.js
