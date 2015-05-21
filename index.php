@@ -29,7 +29,7 @@
           //load the code once the video is initialised
           <?php 
             $name = "saved-code/default.json";
-            if (isset($_REQUEST['id']) && file_exists("saved-code/".$_REQUEST['id'].".json"))
+            if (isset($_REQUEST['id']))
               $name = "saved-code/".$_REQUEST['id'].".json";
             echo "var file = \"".$name."\";";
           ?>
@@ -37,6 +37,14 @@
             $("#title").val(data.name);
             editor.setValue(data.code, -1);
             run(data.code);
+          })
+          .fail(function() {
+            alert("fail");
+            $.getJSON("saved-code/default.json", function(data) {
+              $("#title").val(data.name);
+              editor.setValue(data.code, -1);
+              run(data.code);
+            });
           });
         });
 
