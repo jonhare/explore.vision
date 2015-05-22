@@ -65,9 +65,8 @@
             var count = 0;
             setInterval(function() {
               count++;
-              if (count>demofiles.length)
+              if (count>=demofiles.length)
                 count = 0;
-              console.log(demofiles[count]);
               $.getJSON("saved-code/" + demofiles[count], function(data) {
                 $("#title").val(data.name);
                 editor.setValue(data.code, -1);
