@@ -236,7 +236,7 @@
     <div id="helpDialogInner">
       <p>
         <span style="font-family: lcars_font; font-size: 400%; float: left; position:relative; top:-7px">explore.vision</span>
-        <img style="float: right" src="assets/southampton.png" alt="University of Southampton Logo"></img>
+        <img style="float: right" src="assets/southampton.png" alt="University of Southampton Logo" />
       </p>
       <p style="clear:both; text-align: justify">explore.vision is an interactive browser-based environment for teaching the 
         fundamentals of computer vision and image processing. It was developed 
