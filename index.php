@@ -37,15 +37,16 @@
             }
 
             $name = "saved-code/default.json";
+            echo "var demofiles";
             if (isset($_REQUEST['id'])) {
               if (strcasecmp($_REQUEST['id'], "demo")==0) {
                 $name = "saved-code/".$demos[0];
-                echo "var demofiles = ".json_encode($demos).";\n";
+                echo " = ".json_encode($demos);
               } else {
-                echo "var demofiles;";
                 $name = "saved-code/".$_REQUEST['id'].".json";
               }
             }
+            echo ";\n";
             echo "var file = \"".$name."\";\n";
           ?>
           $.getJSON(file, function(data) {
@@ -109,6 +110,10 @@
           showLoad();
         });
 
+        $('#helpbtn').click(function() {
+          showHelp();
+        });
+
         $( window ).resize(resize);
         resize();
 
@@ -139,8 +144,8 @@
       </div>
       <div class="altcell" style="width:91%;">
         <video id="video" muted loop autoplay>
-          <source src="melies.mp4"></source>
-          <source src="melies.ogv"></source>
+          <source src="assets/melies.mp4"></source>
+          <source src="assets/melies.ogv"></source>
         </video>
         <div style="width:calc(50% - 7px); height: 38px; margin-bottom: 4px; text-align:right; float:left" class="yellow">
           <span class="uif" style="position : relative; top: 6px; left: -6px">INPUT</span>
@@ -149,7 +154,7 @@
           <span class="uif" style="position : relative; top: 6px; left: -6px">OUTPUT</span>
         </div>
         <div style="width:50%; float: left">
-          <div style="position: absolute; z-index: 100000; color:red; width: 640px" id="nowebcam">
+          <div style="position: absolute; z-index: 10000; color:red; width: 640px" id="nowebcam">
             <div style="margin-left: auto; margin-right:auto; padding:10px" class="uif">WEBCAM INPUT NOT AVAILABLE OR NOT SUPPORTED BY YOUR BROWSER</div>
             <div style="margin-left: auto; margin-right:auto; padding:10px; margin-top:390px" class="uif">PLAYING "Le papillon fantastique" by Georges Méliès</div>
           </div>
@@ -227,11 +232,22 @@
       <button id="loadok" onclick="performLoad()">LOAD</button>
     </div>
   </div>
-<!--   <div class="dialog" id="helpDialog">
+  <div class="dialog" id="helpDialog">
     <div id="helpDialogInner">
+      <p>
+        <span style="font-family: lcars_font; font-size: 400%; float: left; position:relative; top:-7px">explore.vision</span>
+        <img style="float: right" src="assets/southampton.png"></img>
+      </p>
+      <p style="clear:both; text-align: justify">explore.vision is an interactive browser-based environment for teaching the 
+        fundamentals of computer vision and image processing. It was developed 
+        by <a href="http://users.ecs.soton.ac.uk">Dr Jonathon Hare<a> from 
+        <a href="http://ecs.soton.ac.uk">Electronics and Computer Science</a> at the
+        <a href="http://www.soton.ac.uk">University of Southampton</a>.
+      </p>
+
       <button id="helpok" onclick="dismissHelp()">DISMISS</button>
     </div>
-  </div> -->
+  </div>
 </body>
 </html>
 

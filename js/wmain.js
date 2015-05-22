@@ -156,3 +156,12 @@ function dismissLoad() {
   $("#dialogBackground").css("display", "none");
 }
 
+function showHelp() {
+  $("#dialogBackground").css("display", "block");
+  $("#helpDialog").css("display", "block");
+}
+
+function dismissHelp() {
+  $("#helpDialog").css("display", "none");
+  $("#dialogBackground").css("display", "none");
+}
