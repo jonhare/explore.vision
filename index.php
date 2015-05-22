@@ -144,8 +144,8 @@
       </div>
       <div class="altcell" style="width:91%;">
         <video id="video" muted loop autoplay>
-          <source src="assets/melies.mp4"></source>
-          <source src="assets/melies.ogv"></source>
+          <source src="assets/melies.mp4"/>
+          <source src="assets/melies.ogv"/>
         </video>
         <div style="width:calc(50% - 7px); height: 38px; margin-bottom: 4px; text-align:right; float:left" class="yellow">
           <span class="uif" style="position : relative; top: 6px; left: -6px">INPUT</span>
@@ -181,7 +181,7 @@
         <div class="altcell" style="width:50%; height:100%; min-height:200px">
           <div style="min-height: 200px; height:calc(100% - 8px); width: calc(100% - 16px); margin:auto;">
             <div class="ui roundleft blue" style="margin-left: 4px; width: 10%;">TITLE</div>
-            <input id="title" type="text" style="width:50%"></input>
+            <input id="title" type="text" style="width:50%"/>
             <button id="helpbtn" style="float:right">HELP</button>
 
             <div style="width: 100%; text-align: center; margin-bottom: 4px">
@@ -224,7 +224,7 @@
   </div>
   <div class="dialog" id="loadDialog">
     <div id="loadDialogInner">
-      ENTER FILE IDENTIFIER: <input type="text" id="codeInput"></input>
+      ENTER FILE IDENTIFIER: <input type="text" id="codeInput"/>
       <br/>
       <span id="loadError"></span>
       <br/>
@@ -236,11 +236,11 @@
     <div id="helpDialogInner">
       <p>
         <span style="font-family: lcars_font; font-size: 400%; float: left; position:relative; top:-7px">explore.vision</span>
-        <img style="float: right" src="assets/southampton.png"></img>
+        <img style="float: right" src="assets/southampton.png" alt="University of Southampton Logo"></img>
       </p>
       <p style="clear:both; text-align: justify">explore.vision is an interactive browser-based environment for teaching the 
         fundamentals of computer vision and image processing. It was developed 
-        by <a href="http://users.ecs.soton.ac.uk">Dr Jonathon Hare<a> from 
+        by <a href="http://users.ecs.soton.ac.uk">Dr Jonathon Hare</a> from 
         <a href="http://ecs.soton.ac.uk">Electronics and Computer Science</a> at the
         <a href="http://www.soton.ac.uk">University of Southampton</a>.
       </p>
