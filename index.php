@@ -184,7 +184,7 @@
             <input id="title" type="text" style="width:50%"/>
             <button id="helpbtn" style="float:right">HELP</button>
 
-            <div style="width: 100%; text-align: center; margin-bottom: 4px">
+            <div style="width: 100%; text-align: center; margin-bottom: 4px; clear: both;">
               <button id="runbtn" style="float:left">ENGAGE</button>
               <button id="savebtn">STORE</button>
               <button id="loadbtn" style="float:right">LOAD</button>
