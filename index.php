@@ -28,10 +28,25 @@
         initialiseVideo("source", "sink", function() {
           //load the code once the video is initialised
           <?php 
+            $demos = [];
+            $files = scandir("saved-code");
+            foreach ($files as $file) {
+              if (strlen($file) > 10) {
+                $demos[] = $file;
+              }
+            }
+
             $name = "saved-code/default.json";
-            if (isset($_REQUEST['id']))
-              $name = "saved-code/".$_REQUEST['id'].".json";
-            echo "var file = \"".$name."\";";
+            if (isset($_REQUEST['id'])) {
+              if (strcasecmp($_REQUEST['id'], "demo")==0) {
+                $name = "saved-code/".$demos[0];
+                echo "var demofiles = ".json_encode($demos).";\n";
+              } else {
+                echo "var demofiles;";
+                $name = "saved-code/".$_REQUEST['id'].".json";
+              }
+            }
+            echo "var file = \"".$name."\";\n";
           ?>
           $.getJSON(file, function(data) {
             $("#title").val(data.name);
@@ -39,13 +54,27 @@
             run(data.code);
           })
           .fail(function() {
-            alert("fail");
             $.getJSON("saved-code/default.json", function(data) {
               $("#title").val(data.name);
               editor.setValue(data.code, -1);
               run(data.code);
             });
           });
+
+          if (demofiles) {
+            var count = 0;
+            setInterval(function() {
+              count++;
+              if (count>demofiles.length)
+                count = 0;
+              console.log(demofiles[count]);
+              $.getJSON("saved-code/" + demofiles[count], function(data) {
+                $("#title").val(data.name);
+                editor.setValue(data.code, -1);
+                run(data.code);
+              });
+            }, 5000);
+          }
         });
 
         //setup the ui controls
