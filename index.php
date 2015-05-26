@@ -182,9 +182,15 @@ limitations under the License.
             <div style="margin-left: auto; margin-right:auto; padding:10px" class="uif">WEBCAM INPUT NOT AVAILABLE OR NOT SUPPORTED BY YOUR BROWSER</div>
             <div style="margin-left: auto; margin-right:auto; padding:10px; margin-top:390px" class="uif">PLAYING "Le papillon fantastique" by Georges Méliès</div>
           </div>
+          <div style="position: absolute; z-index: 10000; color:white; font-family: monospace; font-size: small; padding-left: 1em; background-color:black">
+            FPS: <span id="sourcefps"></span>
+          </div>
           <canvas id="source"></canvas>
         </div>
         <div style="width:50%; float: left">
+          <div style="position: absolute; z-index: 10000; color:white; font-family: monospace; font-size: small; padding-left: 1em; background-color:black">
+            FPS: <span id="sinkfps"></span>
+          </div>
           <canvas id="sink"></canvas>
         </div>
       </div>

@@ -56,11 +56,26 @@ function initialiseVideo(sourceName, sinkName, cb) {
     }
     draw();
     cb();
+    ocvl.sourceframes = 0;
+    ocvl.sinkframes = 0;
+    ocvl.lsourceframes = 0;
+    ocvl.lsinkframes = 0;
+    ocvl.sourcefps = $("#sourcefps");
+    ocvl.sinkfps = $("#sinkfps");
+    setInterval(function() {
+      ocvl.lsourceframes = (ocvl.sourceframes + ocvl.lsourceframes) / 2;
+      ocvl.lsinkframes = (ocvl.sinkframes + ocvl.lsinkframes) / 2;
+      ocvl.sourcefps.text(ocvl.lsourceframes.toFixed(1));
+      ocvl.sinkfps.text(ocvl.lsinkframes.toFixed(1));
+      ocvl.sourceframes = 0;
+      ocvl.sinkframes = 0;
+    }, 1000);
   });
 }
  
 function draw() {
   requestAnimFrame(draw);
+  ocvl.sourceframes++;
   ocvl.source.drawImage(ocvl.video, 0, 0, ocvl.video.videoWidth, ocvl.video.videoHeight, 0, 0, ocvl.source.canvas.width, ocvl.source.canvas.height);
 }
 
@@ -92,6 +107,7 @@ function handleMessage(e) {
     var pixels = ocvl.source.getImageData(0, 0, ocvl.source.canvas.width, ocvl.source.canvas.height);
     worker.postMessage({"message": "image", "pixels":pixels});
   } else if (e.data.message === "setImage") {
+    ocvl.sinkframes++;
     ocvl.sink.putImageData(e.data.pixels, 0, 0);
 
     var pixels = ocvl.source.getImageData(0, 0, ocvl.source.canvas.width, ocvl.source.canvas.height);
