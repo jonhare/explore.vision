@@ -1,6 +1,6 @@
 ![explore.vision](assets/explore-vision.png)
 
-[explore.vision](https://explore.vision) is an interactive browser-based tool for teaching the fundamentals of image processing and computer vision. It was developed by [Dr Jonathon Hare](http://users.ecs.soton.ac.uk/jsh2) from [Electronics and Computer Science](http://ecs.soton.ac.uk) at the [University of Southampton](http://www.soton.ac.uk). 
+[explore.vision](https://explore.vision) is an interactive browser-based tool for teaching the fundamentals of image processing and computer vision. It was developed by [Dr Jonathon Hare](http://users.ecs.soton.ac.uk/jsh2) ([@jonhare](http://github.com/jonhare)) from [Electronics and Computer Science](http://ecs.soton.ac.uk) at the [University of Southampton](http://www.soton.ac.uk). 
 
 [explore.vision](https://explore.vision) allows users to experiment with image analysis techniques by writing code in a simplified Javascript-based programming environment. At Southampton, we're using [explore.vision](https://explore.vision) as a platform for running lab sessions that introduce the fundamentals of computer vision and image processing. In particular, we use it to teach students with very limited programming experience as part of our [summer school for sixth-formers](http://summerschool.ecs.soton.ac.uk).
 
