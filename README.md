@@ -1,4 +1,4 @@
-#explore.vision
+![explore.vision](assets/explore-vision.png)
 
 [explore.vision](https://explore.vision) is an interactive browser-based tool for teaching the fundamentals of image processing and computer vision. It was developed by [Dr Jonathon Hare](http://users.ecs.soton.ac.uk/jsh2) from [Electronics and Computer Science](http://ecs.soton.ac.uk) at the [University of Southampton](http://www.soton.ac.uk). 
 
@@ -10,6 +10,8 @@ explore.vision works in a modern web-browser. If you want to use a webcam to pro
 Currently, you'll need a screen with a resolution above 1440x900 for the interface to display properly. The interface looks best when full-screen mode is enabled in the browser.
 
 ##The explore.vision interface
+![The explore.vision UI](assets/ui.png)
+
 The interface is fairly self explanatory, and is broken into four functional areas. In the top-left, the input video is displayed (either from a webcam or the built-in file). In the top-right, the processed video is displayed. The code that performs the processing of each frame is shown in an editor at the bottom left. The controls and log output are shown in the bottom right. When you've written some code in the editor, you press the ENABLE button to start it running. The save button will save your code to the server, using an automatically generated 5-character code as a the file identifier. The load button allows you to load a previously saved piece of code. 
 
 ##The programming language
