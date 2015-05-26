@@ -195,7 +195,7 @@
                 <span class="uif" style="position : relative; top: 6px; left: -6px">LOG</span>
               </div>
               <div id="logContainer" style="width: 90%; height: calc(100% - 10px); max-height: calc(100% - 10px); background-color: black; float: left; font-family: monospace; color: white;">
-                <div id="log" style="overflow-y:scroll; overflow-x:hidden; width: calc(100% - 10px); text-align: left; margin-left:10px;">
+                <div id="log" style="overflow-y:scroll; overflow-x:hidden; width: calc(100% - 10px); text-align: left; margin-left:10px; white-space: pre">
 
                 </div>
               </div>

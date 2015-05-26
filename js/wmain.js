@@ -29,10 +29,6 @@ function initialiseVideo(sourceName, sinkName, cb) {
             };
   })();
 
-  if (navigator.getUserMedia) {
-    $("#nowebcam").css("display", "none");
-  }
-
   // note: video is defined in gum.js
   ocvl.video.addEventListener('loadedmetadata', function () {
     // due to bug in Chrome: http://crbug.com/168700
@@ -54,11 +50,11 @@ function draw() {
 
 function log(message) {
   var log = $("#log");
-  var currentText = log.html().split("\n");
-  currentText.push(message + "<br/>");
+  var currentText = log.text().split("\n");
+  currentText.push(message);
   if (currentText.length > 100)
     currentText = currentText.splice(currentText.length - 100, currentText.length);
-  log.html(currentText.join("\n"));
+  log.text(currentText.join("\n"));
   log.scrollTop(log.prop("scrollHeight"));
 }
 
@@ -102,6 +98,8 @@ function gumSuccess(stream) {
     ocvl.video.src = stream;
   }
   ocvl.video.play();
+
+  $("#nowebcam").css("display", "none");
 }
 
 function gumError(error) {
