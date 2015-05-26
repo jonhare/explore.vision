@@ -1,62 +1,78 @@
+/*
+Copyright 2015 Jonathon Hare / The University of Southampton
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 100;
-  src: local('Lato Hairline'), local('Lato-Hairline'), url(http://fonts.gstatic.com/s/lato/v11/5FbdueAKJ1eeO4CsvGhNRevvDin1pK8aKteLpeZ5c0A.ttf) format('truetype');
+  src: local('Lato Hairline'), local('Lato-Hairline'), url(//fonts.gstatic.com/s/lato/v11/5FbdueAKJ1eeO4CsvGhNRevvDin1pK8aKteLpeZ5c0A.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
-  src: local('Lato Light'), local('Lato-Light'), url(http://fonts.gstatic.com/s/lato/v11/0DeoTBMnW4sOpD0Zb8OQSALUuEpTyoUstqEm5AMlJo4.ttf) format('truetype');
+  src: local('Lato Light'), local('Lato-Light'), url(//fonts.gstatic.com/s/lato/v11/0DeoTBMnW4sOpD0Zb8OQSALUuEpTyoUstqEm5AMlJo4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 400;
-  src: local('Lato Regular'), local('Lato-Regular'), url(http://fonts.gstatic.com/s/lato/v11/1EqTbJWOZQBfhZ0e3RL9uvesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
+  src: local('Lato Regular'), local('Lato-Regular'), url(//fonts.gstatic.com/s/lato/v11/1EqTbJWOZQBfhZ0e3RL9uvesZW2xOQ-xsNqO47m55DA.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  src: local('Lato Bold'), local('Lato-Bold'), url(http://fonts.gstatic.com/s/lato/v11/MZ1aViPqjfvZwVD_tzjjkwLUuEpTyoUstqEm5AMlJo4.ttf) format('truetype');
+  src: local('Lato Bold'), local('Lato-Bold'), url(//fonts.gstatic.com/s/lato/v11/MZ1aViPqjfvZwVD_tzjjkwLUuEpTyoUstqEm5AMlJo4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 900;
-  src: local('Lato Black'), local('Lato-Black'), url(http://fonts.gstatic.com/s/lato/v11/jZjuDZSb58pQtWhOr6q-6ALUuEpTyoUstqEm5AMlJo4.ttf) format('truetype');
+  src: local('Lato Black'), local('Lato-Black'), url(//fonts.gstatic.com/s/lato/v11/jZjuDZSb58pQtWhOr6q-6ALUuEpTyoUstqEm5AMlJo4.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 100;
-  src: local('Lato Hairline Italic'), local('Lato-HairlineItalic'), url(http://fonts.gstatic.com/s/lato/v11/gc5ZVKiLNkRdGlU3GaSVBXYhjbSpvc47ee6xR_80Hnw.ttf) format('truetype');
+  src: local('Lato Hairline Italic'), local('Lato-HairlineItalic'), url(//fonts.gstatic.com/s/lato/v11/gc5ZVKiLNkRdGlU3GaSVBXYhjbSpvc47ee6xR_80Hnw.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 300;
-  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(http://fonts.gstatic.com/s/lato/v11/2HG_tEPiQ4Z6795cGfdivCZ2oysoEQEeKwjgmXLRnTc.ttf) format('truetype');
+  src: local('Lato Light Italic'), local('Lato-LightItalic'), url(//fonts.gstatic.com/s/lato/v11/2HG_tEPiQ4Z6795cGfdivCZ2oysoEQEeKwjgmXLRnTc.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 400;
-  src: local('Lato Italic'), local('Lato-Italic'), url(http://fonts.gstatic.com/s/lato/v11/61V2bQZoWB5DkWAUJStypevvDin1pK8aKteLpeZ5c0A.ttf) format('truetype');
+  src: local('Lato Italic'), local('Lato-Italic'), url(//fonts.gstatic.com/s/lato/v11/61V2bQZoWB5DkWAUJStypevvDin1pK8aKteLpeZ5c0A.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 700;
-  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(http://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYECZ2oysoEQEeKwjgmXLRnTc.ttf) format('truetype');
+  src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(//fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYECZ2oysoEQEeKwjgmXLRnTc.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Lato';
   font-style: italic;
   font-weight: 900;
-  src: local('Lato Black Italic'), local('Lato-BlackItalic'), url(http://fonts.gstatic.com/s/lato/v11/VNUH7ZAcagYBWsAiBBCEYyZ2oysoEQEeKwjgmXLRnTc.ttf) format('truetype');
+  src: local('Lato Black Italic'), local('Lato-BlackItalic'), url(//fonts.gstatic.com/s/lato/v11/VNUH7ZAcagYBWsAiBBCEYyZ2oysoEQEeKwjgmXLRnTc.ttf) format('truetype');
 }
 
 @font-face {
@@ -231,10 +247,36 @@ button:hover {
   letter-spacing: 0.1ex;
 }
 
+#helpDialog {
+  width: 80%;
+  height: 80%;
+}
+
 #helpDialogInner {
   font-family: Lato, sans-serif;
   font-size: 100%; 
-  min-width: 60em;
+  height: calc(100% - 80px);
+}
+
+#helpContents {
+  text-align: justify;
+  height: calc(100% - 135px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-left: 1ex;
+  padding-right: 1ex;
+}
+
+#helpContents img {
+  width:100%;
+}
+
+#helpContents a:link {
+  color: white;
+}
+
+#helpContents a:visited {
+  color: white;
 }
 
 #codeInput {

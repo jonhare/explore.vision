@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<!-- 
+Copyright 2015 Jonathon Hare / The University of Southampton
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -13,6 +28,7 @@
   <script type="text/javascript" src="js/theme-monokai.js"></script>
   <script type="text/javascript" src="js/ext-language_tools.js"></script>
   <script type="text/javascript" src="js/worker-javascript.js"></script>
+  <script type="text/javascript" src="js/js.cookie.js"></script>
   <script type="text/javascript">
     function resize() {
         var cell = $("#stretchy");
@@ -74,6 +90,14 @@
                 run(data.code);
               });
             }, 5000);
+          } else {
+            //show splash screen if necessary
+            if (file === "saved-code/default.json") {
+              if (Cookies.get('splashscreen') === undefined) {
+                showHelp();
+                Cookies.set('splashscreen', '1');
+              }
+            }
           }
         });
 
@@ -238,13 +262,18 @@
         <span style="font-family: lcars_font; font-size: 400%; float: left; position:relative; top:-7px">explore.vision</span>
         <img style="float: right" src="assets/southampton.png" alt="University of Southampton Logo" />
       </p>
-      <p style="clear:both; text-align: justify">explore.vision is an interactive browser-based environment for teaching the 
-        fundamentals of computer vision and image processing. It was developed 
-        by <a href="http://users.ecs.soton.ac.uk">Dr Jonathon Hare</a> from 
-        <a href="http://ecs.soton.ac.uk">Electronics and Computer Science</a> at the
-        <a href="http://www.soton.ac.uk">University of Southampton</a>.
+      <p style="clear:both; text-align: justify">
       </p>
 
+      <div id="helpContents">
+        <?php 
+            include_once("Parsedown.php");
+            $Parsedown = new Parsedown();
+            $readme = file_get_contents("README.md");
+            $readme = substr( $readme, strpos($readme, "\n")+1 );
+            echo $Parsedown->text($readme);
+        ?>
+      </div>
       <button id="helpok" onclick="dismissHelp()">DISMISS</button>
     </div>
   </div>
