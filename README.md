@@ -35,7 +35,7 @@ The following code shows an implementation of the process function that copies t
 ###Additional functions
 [explore.vision](https://explore.vision) purposefully doesn't include a library of built-in image processing and computer vision functionality. A few helper functions/methods are however provided:
 
-* `image.clone()` the image objects have a `clone` method that allows you to create a copy of a frame. This is useful for performing operations that rely on a previous frame, such as background differencing:
+* `image.clone()` creates a copy of an image. This is useful for performing operations that rely on a previous frame, such as background differencing:
 
 		var last;
 		function process(input, output) {
