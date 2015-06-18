@@ -208,6 +208,19 @@ button {
   border-radius: 25px 25px 25px 25px;
 }
 
+#loadDialogInner button {
+  width: calc(32% - 10px);
+  color: black;
+  background-color: #C084C1; 
+  outline: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 4px;
+  border-radius: 25px 25px 25px 25px;
+}
+
 button:hover {
   background-color: #BF5054; 
 }

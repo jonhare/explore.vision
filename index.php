@@ -258,6 +258,7 @@ limitations under the License.
       <br/>
       <span id="loadError"></span>
       <br/>
+      <button id="browse" onclick="browse()">BROWSE</button>
       <button id="cancel" onclick="dismissLoad()">CANCEL</button>
       <button id="loadok" onclick="performLoad()">LOAD</button>
     </div>

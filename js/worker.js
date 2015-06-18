@@ -40,6 +40,8 @@ function messageReceived(e) {
     if (!inimg || inimg.width!=e.data.pixels.width || inimg.height!=e.data.pixels.height) {
       inimg = newImage(e.data.pixels.width, e.data.pixels.height);
       outimg = newImage(e.data.pixels.width, e.data.pixels.height);
+    } else {
+      clearImage(output);
     }
 
     toImage(e.data.pixels, inimg);
@@ -66,6 +68,9 @@ function newImage(width, height, data) {
   output.clone = function() {
     return newImage(this.width, this.height, this);
   };
+  output.clear = function() {
+    return clearImage(this);
+  };
   if (!data) {
     for (y=0; y<output.height; y++) {
       output.push([]);
@@ -88,6 +93,17 @@ function newImage(width, height, data) {
     }
   }
   return output;
+}
+
+function clearImage(output) {
+  var x,y;
+  for (y=0; y<output.height; y++) {
+    for (x=0; x<output.width; x++) {
+      output[y][x].r = 0;
+      output[y][x].g = 0;
+      output[y][x].b = 0;
+    }
+  }
 }
 
 var _INV_255_ = 1/255;
