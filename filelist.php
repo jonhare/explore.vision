@@ -36,26 +36,28 @@ limitations under the License.
     <div class="cell yellow uif" style="width:6%; text-align:right">
       FILES&nbsp;
     </div>
-    <div class="cell uif" style="color:white; overflow-y:scroll">
-      <?php
-        $files = scandir("saved-code");
-        $i = 0;
-        foreach ($files as $file) {
-          if (strlen($file) > 10) {
-            $str = file_get_contents("saved-code/".$file);
-            $json = json_decode($str, true);
+    <div class="cell uif">
+      <div style="color:white; overflow-y:scroll" id="content" class="uif">
+        <?php
+          $files = scandir("saved-code");
+          $i = 0;
+          foreach ($files as $file) {
+            if (strlen($file) > 10) {
+              $str = file_get_contents("saved-code/".$file);
+              $json = json_decode($str, true);
 
-            $containerClass = "fileitem";
-            if ($i % 2 == 0) {
-              $containerClass.=" alt";
+              $containerClass = "fileitem";
+              if ($i % 2 == 0) {
+                $containerClass.=" alt";
+              }
+              $fn = str_replace(".json", "", $file);
+
+              echo "<a href='".$fn."' class='".$containerClass."'><span class='filename'>".$fn."</span> <span class='filetitle'>".$json["name"]."</span></a>";
+              $i++;
             }
-            $fn = str_replace(".json", "", $file);
-
-            echo "<a href='".$fn."' class='".$containerClass."'><span class='filename'>".$fn."</span> <span class='filetitle'>".$json["name"]."</span></a>";
-            $i++;
           }
-        }
-      ?>
+        ?>
+      </div>
     </div>
     <div class="cell" style="width:1%;"></div>
   </div>

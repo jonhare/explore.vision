@@ -284,6 +284,14 @@ limitations under the License.
       <button id="helpok" onclick="dismissHelp()">DISMISS</button>
     </div>
   </div>
+  <div class="dialog" id="browseDialog">
+    <div id="helpDialogInner">
+      <div id="browseContents">
+        
+      </div>
+      <button id="cancelBrowse" onclick="dismissBrowse()">CANCEL</button>
+    </div>
+  </div>
 </body>
 </html>
 

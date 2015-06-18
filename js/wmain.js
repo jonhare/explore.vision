@@ -197,5 +197,16 @@ function dismissHelp() {
 }
 
 function browse() {
-  window.location = "/filelist"
+  var url = window.location + "";
+  var base = url.substring(0,url.lastIndexOf("/"));
+  url = base + "/filelist #content";
+
+  $("#loadDialog").css("display", "none");
+  $("#browseContents").load(url);
+  $("#browseDialog").css("display", "block");
+}
+
+function dismissBrowse() {
+  $("#browseDialog").css("display", "none");
+  $("#dialogBackground").css("display", "none");
 }

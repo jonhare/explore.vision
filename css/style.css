@@ -240,11 +240,11 @@ button:hover {
   -moz-transform: translateY(-50%) translateX(-50%);
 }
 
-#saveDialog, #loadDialog, #helpDialog {
+#saveDialog, #loadDialog, #helpDialog, #browseDialog {
   display: none;
 }
 
-#saveDialogInner, #loadDialogInner, #helpDialogInner {
+#saveDialogInner, #loadDialogInner, #helpDialogInner, #browseDialogInner {
   margin: 20px;
   padding: 20px;
   min-width: 10em;
@@ -260,7 +260,7 @@ button:hover {
   letter-spacing: 0.1ex;
 }
 
-#helpDialog {
+#helpDialog, #browseDialog {
   width: 80%;
   height: 80%;
 }
@@ -278,6 +278,18 @@ button:hover {
   overflow-y: scroll;
   padding-left: 1ex;
   padding-right: 1ex;
+}
+
+#browseContents {
+  height: calc(100% - 40px);
+  padding-left: 1ex;
+  padding-right: 1ex; 
+  width: 100%;
+  display: table;
+}
+
+#browseContents > div {
+  height: 100%;
 }
 
 #helpContents img {
@@ -345,6 +357,7 @@ button:hover {
   background-color: black;
   padding: inherit;
   margin: -5px;
+  text-align: left;
 }
 
 
