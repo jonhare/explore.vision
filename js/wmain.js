@@ -195,3 +195,7 @@ function dismissHelp() {
   $("#helpDialog").css("display", "none");
   $("#dialogBackground").css("display", "none");
 }
+
+function browse() {
+  window.location = "/filelist"
+}
