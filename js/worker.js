@@ -41,7 +41,7 @@ function messageReceived(e) {
       inimg = newImage(e.data.pixels.width, e.data.pixels.height);
       outimg = newImage(e.data.pixels.width, e.data.pixels.height);
     } else {
-      clearImage(output);
+      clearImage(outimg);
     }
 
     toImage(e.data.pixels, inimg);
