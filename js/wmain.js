@@ -124,8 +124,8 @@ function handleMessage(e) {
 function gumSuccess(stream) {
   if ('mozSrcObject' in ocvl.video) {
     ocvl.video.mozSrcObject = stream;
-  } else if (window.URL) {
-    ocvl.video.src = window.URL.createObjectURL(stream);
+  // } else if (window.URL) {
+  //   ocvl.video.src = window.URL.createObjectURL(stream);
   } else {
     ocvl.video.src = stream;
   }
