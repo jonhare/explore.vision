@@ -140,10 +140,14 @@ function gumError(error) {
 }
 
 function gumInit() {
-  navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+  if (navigator.mediaDevices.getUserMedia) {
+    navigator.getUserMedia({video: true }).then(gumSuccess).catch(gumError);
+  } else {
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-  if (navigator.getUserMedia) {
-    navigator.getUserMedia({video: true }, gumSuccess, gumError);
+    if (navigator.getUserMedia) {
+      navigator.getUserMedia({video: true }, gumSuccess, gumError);
+    }
   }
 }
 
