@@ -141,7 +141,7 @@ function gumError(error) {
 
 function gumInit() {
   if (navigator.mediaDevices.getUserMedia) {
-    navigator.getUserMedia({video: true }).then(gumSuccess).catch(gumError);
+    navigator.mediaDevices.getUserMedia({video: true }).then(gumSuccess).catch(gumError);
   } else {
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
